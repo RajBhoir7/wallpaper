@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .full-page {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-image:  url("/static/img/finalgo2.png");
+            background-position: center;
+            background-repeat: repeat;
+            background-size: cover;
+            position: absolute;
+        }
+
+        /* Style inputs */
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgb(58, 194, 17);
+            margin-top: 6px;
+            margin-bottom: 16px;
+
+        }
+
+        .home-btn {
+            width: 80px;
+            padding: 10px 10px;
+            cursor: pointer;
+            margin-right: 60%;
+            background: #9bf393;
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        input[type=submit] {
+            background-color: #169e1b;
+            color: rgb(248, 247, 247);
+            padding: 20px 29px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: medium;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+   
+        .container {
+            border-radius: 5px;
+            position: relative;
+            margin: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+
+            .column,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full-page">
+        <!--
+        <ul>
+            <li style="color: #ffffff;" "background: #000000; >
+                <h1><a href="homepage.html"><button type='home' class='home-btn'>
+                             Home</button></a>Responsive Content Section</h1>
+            </li>-->
+        </ul>
+        <div class="container">
+            <div style="text-align:center">
+                <h2><span style="color: white;">Contact Us</span></h2>
+                <p><span style="color: white;">Swing by for a cup of coffee, or leave us a message:</span></p>
+            </div>
+            <div class="row">
+
+                <!--
+                <div class="column">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15065.417396209425!2d73.45170506895775!3d19.26695064763284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be78a06f1e29e55%3A0xdf5c36215408f4c6!2sShivale%2C%20Maharashtra%20421401!5e0!3m2!1sen!2sin!4v1659193427669!5m2!1sen!2sin"
+                        width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>"
+                   
+                </div>-->
+                <div class="column">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <label for="fname"><span style="color: white;">First Name</span></label>
+                        <input type="text" id="fname" name="first_name" placeholder="Your name..">
+                        <label for="lname"><span style="color: white;">Last Name</span></label>
+                                <input type="text" id="lname" name="last_name" placeholder="Your last name..">
+                                <label for="country"><span style="color: white;">Country</span></label>
+                                        <select id="country" name="country">
+                                            <option value="australia"><span style="color: white;">Australia</span></option>
+                                            <option value="canada"><span style="color: white;">Canada</span></option>
+                                            <option value="canada"><span style="color: white;">India</span></option>
+                                            <option value="canada"><span style="color: white;">Japan</span></option>
+                                            <option value="usa"><span style="color: white;">United State Kigdom (USA)
+                                                    </span></option>
+                                        </select>
+                                        <label for="subject"><span style="color: white;">Subject</span></label>
+                                        <textarea id="subject" name="msg" placeholder="Write something.."
+                                            style="height:170px"></textarea>
+                                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
