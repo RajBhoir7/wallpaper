@@ -1,214 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-.full-page {
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-	background-image: url(tanjirobg.jpg);
-	background-position: center;
-	background-repeat: repeat;
-	background-size: cover;
-	position: absolute;
-	justify-content: center;
-	animation: change 25s infinite ease-in-out;
-}
-
-@keyframes change {
-	0% {
-		background-image: url(erenbg.jpg);
-	}
-
-	12% {
-		background-image: url(astabg.jpg);
-	}
-
-	24% {
-		background-image: url(bakibg.jpg);
-	}
-
-	36% {
-		background-image: url(gojobg.jpg);
-	}
-
-	48% {
-		background-image: url(inosukebg.jpg);
-	}
-
-	60% {
-		background-image: url(sukunabg.jpg);
-	}
-
-	72% {
-		background-image: url(tanjirobg.jpg);
-	}
-
-	84% {
-		background-image: url(yunobg.jpg);
-	}
-
-	96% {
-		background-image: url(zenitsubg.png);
-	}
-
-}
-
-.a {
-	text-decoration: none;
-	color: palevioletred;
-	font-size: 28px;
-}
-
-.form-box {
-
-	width: 380px;
-	height: 550px;
-	position: relative;
-	margin: auto;
-	padding: 10px;
-	background: rgba(0, 0, 0, 0.3);
-	overflow: hidden;
-
-}
-
-.button-box {
-	width: 220px;
-	margin: 35px auto;
-	position: relative;
-	box-shadow: 0 0 20px 9px #ff61241f;
-	border-radius: 30px;
-}
-
-.toggle-btn {
-	padding: 10px 30px;
-	cursor: pointer;
-	background: transparent;
-	border: 0;
-	outline: none;
-	position: relative;
-}
-
-#btn {
-	top: 0;
-	left: 0;
-	position: absolute;
-	width: 110px;
-	height: 100%;
-	background: #F3C693;
-	border-radius: 30px;
-	transition: .5s;
-}
-
-.input-group-login {
-	top: 150px;
-	position: absolute;
-	width: 280px;
-	transition: .5s;
-}
-
-.input-group-register {
-	top: 120px;
-	position: absolute;
-	width: 280px;
-	transition: .5s;
-}
-
-.input-field {
-	width: 100%;
-	padding: 10px 0;
-	margin: 5px 0;
-	border-left: 0;
-	border-top: 0;
-	border-right: 0;
-	border-bottom: 1px solid#a3a2a2;
-	outline: none;
-	background: transparent;
-}
-
-.submit-btn {
-	width: 85%;
-	padding: 10px 30px;
-	cursor: pointer;
-	display: block;
-	margin: auto;
-	background: #F3C693;
-	border: 0;
-	outline: none;
-	border-radius: 30px;
-}
-
-.home-btn {
-	width: 30%;
-	padding: 10px 10px;
-	cursor: pointer;
-	margin-top: 370px;
-	margin-left: 130px;
-	background: #F3C693;
-	border: 0;
-	outline: none;
-	border-radius: 30px;
-}
-
-.check-box {
-	margin: 30px 10px 34px 0;
-}
-
-span {
-	color: #a3a2a2;
-	font-size: 12px;
-	bottom: 68px;
-	position: absolute;
-}
-
-#login {
-	left: 50px;
-}
-
-#login input {
-	color: white;
-	font-size: 15;
-}
-
-#register {
-	left: 450px;
-}
-
-#register input {
-	color: white;
-	font-size: 15;
-
-}
-
-@media screen and (max-width: 600px) {
-
-	.full-page,
-	.a,
-	.form-box,
-	.button-box,
-	.toggle-btn,
-	#btn,
-	.input-group-login,
-	.input-group-register,
-	.input-field,
-	.submit-btn,
-	.home-btn,
-	.check-box,
-	span,
-	#login,
-	#login input,
-	#register {
-		float: none;
-		width: 100%;
-	}
-}
-</style>
+{% load static %}
 <title>Login page</title>
+<link rel="stylesheet" href="{% static 'css/loginpage.css' %}">
 <body>
     <div class="full-page">
     <div class="navbar">
@@ -220,6 +14,9 @@ span {
             </ul>
         </nav>
     </div>
+
+
+
     <div id='login-form' class='login-page'>
         <div class="form-box">
             <div class='button-box'>
@@ -227,23 +24,32 @@ span {
                 <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
                 <button type='button' onclick='register()' class='toggle-btn'>Register</button>
             </div>
+            <div align="center">{% include 'aleart.html' %}</div>
+
             <a href="{% url 'home' %}"><button type='home' class='home-btn'>Home</button></a>
-            <form id='login' class='input-group-login'>
-                <input type='text' class='input-field' placeholder='Email Id' required>
-                <input type='password' class='input-field' placeholder='Enter Password' required>
+
+			<!-- Login -->
+            <form id='login' class='input-group-login' method="POST">
+				{% csrf_token %}
+                <input type='text' class='input-field' placeholder='Email Id' required name="username">
+                <input type='password' class='input-field' placeholder='Enter Password' required name="password">
                 <input type='checkbox' class='check-box'>Remember Password
-                <button type='submit' class='submit-btn'>Log in</button>
-              
+                <button type='submit' class='submit-btn' name="Submit_login">Log in</button>
             </form>
-            <form id='register' class='input-group-register'>
-                <input type='text' class='input-field' placeholder='First Name' required>
-                <input type='text' class='input-field' placeholder='Last Name ' required>
-                <input type='email' class='input-field' placeholder='Email Id' required>
-                <input type='password' class='input-field' placeholder='Enter Password' required>
-                <input type='password' class='input-field' placeholder='Confirm Password' required>
+
+			<!-- Register -->
+            <form id='register' class='input-group-register' method="POST">
+				{% csrf_token %}
+                <input type='text' class='input-field' placeholder='First Name' required name="first_name">
+                <input type='text' class='input-field' placeholder='Last Name ' required name="last_name">
+                <input type='email' class='input-field' placeholder='Email Id' required name="email">
+                <input type='password' class='input-field' placeholder='Enter Password' required name="password1">
+                <input type='password' class='input-field' placeholder='Confirm Password' required name="password2">
                 <input type='checkbox' class='check-box'><span>I agree to the terms and conditions</span>
-                <button type='submit' class='submit-btn'>Register</button>
+                <button type='submit' class='submit-btn' name="Submit_Register">Register</button>
             </form>
+
+			
         </div>
     </div>
     </div>

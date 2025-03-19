@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+
+  .home-btn {
+            width: 80px;
+            padding: 10px 10px;
+            cursor: pointer;
+            margin-right: 90%;
+            background: #9bf393;
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+            position: relative;
+        }
+  .header {
+    text-align: center;
+    padding: 32px;
+    background: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .row {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap;
+    /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .column {
+    -ms-flex: 25%;
+    /* IE10 */
+    flex: 25%;
+    max-width: 50%;
+    padding: 0 4px;
+  }
+
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+
+<a href="{% url 'home' %}"><button type='home' class='home-btn'>
+                             Home</button></a>
+
+
+
+
+    <h1 style="color: white;">Wallpapers</h1>
+  </div>
+
+  <!-- Photo Grid -->
+  <div class="row">
+    {% for i in data %}
+    <div class="column">
+
+      
+      <a href="media/{{i.wallpaperImg }}" download="Wolvie's Galaxy"><img src="media/{{i.wallpaperImg }}" style="width:2=300px" height="300px"></a>
+      
+
+    </div>
+    {%endfor%}
+
+  </div>  
+
+</body>
+
+</html>

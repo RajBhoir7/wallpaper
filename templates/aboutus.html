@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+</head>
+
+<body>
+    <div class="full-page">
+        <!--
+        <ul>
+            <li style="color: #ffffff;" "background: #000000; >
+                <h1><a href="homepage.html"><button type='home' class='home-btn'>
+                             Home</button></a>Responsive Content Section</h1>
+            </li>-->
+        </ul>
+        <div class="container">
+            <div style="text-align:center mt-4">
+                <a href="{% url 'home' %}"><button type='home' class='home-btn'>
+                    Home</button></a>
+
+                <h1><span style="color: white;">About Us</span></h1>
+                <p><span style="color: white">we aim to showcase how a seamless and secure wallpaper browsing, 
+                    authentication, and one-click download experience can be integrated into a modern web 
+                    platform. With user authentication, personalized collections, and instant downloads, Wolive 
+                    Galaxy enhances accessibility while ensuring data security and system efficiency. This work 
+                    contributes to the growing body of knowledge on developing scalable, user-friendly content 
+                    delivery platforms, serving as a practical reference for developers implementing similar 
+                    solutions</span></p>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
